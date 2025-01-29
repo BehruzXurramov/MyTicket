@@ -24,3 +24,6 @@ async function start() {
   }
 }
 start();
+
+
+// Tableni modelini classini yaratayotganda nega uni o'zidan extends qilamiz

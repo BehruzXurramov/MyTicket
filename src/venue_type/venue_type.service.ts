@@ -15,7 +15,7 @@ export class VenueTypeService {
   }
 
   findAll() {
-    return this.venueTypeModel.findAll();
+    return this.venueTypeModel.findAll({ include: { all: true } });
   }
 
   findOne(id: number) {
