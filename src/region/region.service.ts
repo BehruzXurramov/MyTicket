@@ -3,12 +3,19 @@ import { CreateRegionDto } from "./dto/create-region.dto";
 import { UpdateRegionDto } from "./dto/update-region.dto";
 import { InjectModel } from "@nestjs/sequelize";
 import { Region } from "./models/region.models";
+import { FileService } from "../file/file.service";
 
 @Injectable()
 export class RegionService {
-  constructor(@InjectModel(Region) private regionModel: typeof Region) {}
-  create(createRegionDto: CreateRegionDto) {
-    return this.regionModel.create(createRegionDto);
+  constructor(
+    @InjectModel(Region) private regionModel: typeof Region,
+    private readonly fileService: FileService
+  ) {} 
+  async create(createRegionDto: CreateRegionDto, image: any) {
+    console.log(image);
+
+    const fileName = await this.fileService.saveFile(image);
+    return this.regionModel.create({ ...createRegionDto, image: fileName });
   }
 
   findAll() {

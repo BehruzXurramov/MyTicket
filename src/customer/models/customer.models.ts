@@ -1,4 +1,10 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import {
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
 import { Lang } from "src/lang/models/lang.model";
 
 interface ICustomerCreationAttr {
@@ -11,9 +17,10 @@ interface ICustomerCreationAttr {
   gender: string;
   langId: number;
   hashed_refresh_token: string;
+  password: string;
 }
 
-@Table({tableName: "customer"})
+@Table({ tableName: "customer" })
 export class Customer extends Model<Customer, ICustomerCreationAttr> {
   @Column({
     type: DataType.STRING,
@@ -60,4 +67,9 @@ export class Customer extends Model<Customer, ICustomerCreationAttr> {
     type: DataType.STRING,
   })
   hashed_refresh_token: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  password: string;
 }

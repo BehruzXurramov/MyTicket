@@ -49,10 +49,22 @@ import { CartStatus } from "./cart_status/models/cart_status.models";
 import { Cart } from "./cart/models/cart.models";
 import { CartItemModule } from "./cart_item/cart_item.module";
 import { CartItem } from "./cart_item/models/cart_item.models";
+import { FileModule } from './file/file.module';
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "path";
+import { FileService } from "./file/file.service";
+import { SingleFileService } from "./single-file.service";
+import { MultiFileService } from "./multi-file.service";
+import { SingleFileController } from "./single-file.controller";
+import { MultiFileController } from "./multi-file.controller";
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: ".env", isGlobal: true }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, "..", "static"),
+    }),
     SequelizeModule.forRoot({
       dialect: "postgres",
       host: process.env.POSTGRES_HOST,
@@ -114,8 +126,10 @@ import { CartItem } from "./cart_item/models/cart_item.models";
     TicketModule,
     CartStatusModule,
     CartItemModule,
+    FileModule,
+    AdminModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [SingleFileController, MultiFileController],
+  providers: [FileService, SingleFileService, MultiFileService],
 })
 export class AppModule {}

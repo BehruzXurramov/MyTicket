@@ -8,7 +8,7 @@ import {
 export class SignInDto {
 //   @IsEmail()
   readonly email: string;
-//   @IsStrongPassword({ minLength: 6 })
+  @IsStrongPassword({ minLength: 6 }, {message: "Parol yetarlicha mustaxkam emas"})
   readonly password: string;
   @IsString()
   @IsNotEmpty()

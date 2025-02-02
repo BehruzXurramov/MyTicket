@@ -4,6 +4,7 @@ import { Venue } from "src/venue/models/venue.models";
 
 interface IRegionCreationAttr {
   name: string;
+  image: string;
 }
 
 @Table({ tableName: "region" })
@@ -19,6 +20,11 @@ export class Region extends Model<Region, IRegionCreationAttr> {
     type: DataType.STRING(50),
   })
   name: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  image: string;
 
   @HasMany(() => District)
   district: District[];

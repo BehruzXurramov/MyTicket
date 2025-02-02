@@ -8,4 +8,5 @@ export class CreateCustomerDto {
   gender: string;
   langId: number;
   hashed_refresh_token: string;
+  password: string;
 }
