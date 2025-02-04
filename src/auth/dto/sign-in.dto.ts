@@ -1,16 +1,12 @@
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsString,
-  IsStrongPassword,
-} from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class SignInDto {
-//   @IsEmail()
+  @ApiProperty({ default: "bxurramov597@gmail.com" })
   readonly email: string;
-  @IsStrongPassword({ minLength: 6 }, {message: "Parol yetarlicha mustaxkam emas"})
+
+  @ApiProperty({ default: "12345678" })
   readonly password: string;
-  @IsString()
-  @IsNotEmpty()
+
+  @ApiProperty({ default: "some_value" })
   readonly value: string;
 }

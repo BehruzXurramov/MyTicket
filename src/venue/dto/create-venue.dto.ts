@@ -1,22 +1,27 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { IsString } from "class-validator";
 
 export class CreateVenueDto {
-  @IsString()
-  @ApiProperty()
+  @ApiProperty({ default: "Sample Venue" })
   name: string;
-  @ApiProperty()
+
+  @ApiProperty({ default: "123 Venue Street, City" })
   address: string;
-  @ApiProperty()
+
+  @ApiProperty({ default: "Venue Location" })
   locatin: string;
-  @ApiProperty()
+
+  @ApiProperty({ default: "https://venue-site.com" })
   site: string;
-  @ApiProperty()
+
+  @ApiProperty({ default: "+1234567890" })
   phone: string;
-  @ApiProperty()
+
+  @ApiProperty({ default: ["A1", "B2", "C3"] })
   schema: string[];
-  @ApiProperty()
+
+  @ApiProperty({ default: 1 })
   regionId: number;
-  @ApiPropertyOptional()
+
+  @ApiPropertyOptional({ default: 1 })
   districtId: number;
 }

@@ -3,7 +3,7 @@ import * as AWS from 'aws-sdk';
 
 @Injectable()
 export class MultiFileService {
-  AWS_S3_BUCKET = "exammebel";
+  AWS_S3_BUCKET = "chelagim";
   s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,

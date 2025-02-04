@@ -100,7 +100,7 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return this.userModel.findOne({ where: { id } });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
